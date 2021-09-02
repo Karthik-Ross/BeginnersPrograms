@@ -1,0 +1,365 @@
+#Arithmetic operators
+9 / 2 gives output as 4.5 whereas if u want to get output without the float(decimal) value then u have to use //
+9 // 2 gives output as 4
+and for the rounding off if u have the decimal place num greater than 5 then u add 1 to the number.Ex: 4.6 => 5
+if u have the decimal place num lesser than 5 then u dont change the number.Ex: 4.3 => 4
+if u have the decimal place num equal to 5 then we check the number meaning if it is an odd number we add 1 or if it is even number we keep it as it is
+Ex 1 : 3.5 => 4
+Ex 2 : 4.5 => 4
+
+#Creating a Function (Syntax)
+def function_name(parameters) :
+	write you code here with proper indentation
+
+#File handling
+file = open("file_name", "type")
+type = "r"--> read mode
+       "w"--> write mode
+       "a"--> append mode
+
+#Using json
+import json
+json_file = json.load(open("file_name_json")) //this is for making a json file into a python file
+
+#Importing of difflib for getting the close mathces
+from difflib import get_close_matches
+get_close_matches("the_string_u_want_to_match", "the_string_tat_is_already_present", cutoff=0.1 to 0.9)
+			//cutoff is used for getting the most closest match
+			//higher the value lower the matches
+
+#Numpy library
+import numpy as np
+
+np.zeros((r,c))  //For getting in 2D form      Example : np.zeros((3,3))
+							                 [ 0  ,  0  ,  0  
+	  r --> no of rows                                                 0  ,  0  ,  0
+	  c --> no of columns                                              0  ,  0  ,  0  ]
+
+np.eye(value)   //For unitary matrix          Example : np.eye(4)
+									 [ 1  ,  0  ,  0  
+                                                                           0  ,  1  ,  0
+                                                                           0  ,  0  ,  1  ]
+np.ones((r,c))  //For identity matrix           Example : np.ones((3,3))
+									 [ 1  ,  1  ,  1
+									   1  ,  1  ,  1
+                                                                           1  ,  1  ,  1  ]
+
+//For getting or creating array elements using numpy
+np.arange(value)			       Example : np.arange(5)
+									 [ 0  ,  1  ,  2  ,  3  ,  4  ]
+//For getting 2D array of elements
+np.arange(value).reshape(r,c)                  Example : np.arange(12).reshape(3,4)
+							  		 [ 0  ,  1  ,  2  ,  3
+									   4  ,  5  ,  6  ,  7
+									   8  ,  9  ,  10 ,  11  ]
+
+//For getting linear space in a range, example: from 0-10 --> (0 , 2.5 , 5 , 7.5 , 10)
+np.linspace(minv,maxv,nof)                     Example : np.linspace(0,100,5)
+	minv --> minimum value                                           [ 0  ,  25 ,  50 ,  75 ,  100 ]
+	maxv --> maximum value
+	nof  --> number of elements you want to show
+
+//For getting random values
+np.random.rand(value_range)    //we get random values from 0 to 1 in the range mentioned
+					       Example : np.random.rand(2)
+									 [ 0.23444 ,  0.78895 ]
+np.random.randn(value_range)   //we get negative random values 
+					       Example : np.random.randn(5)
+									 [ 0.23346 , -0.43274  , -0.67865  , -0.77783 ,  0.99865  ]
+np.random.randint(range)       //we get a random value from 0 to the range given
+					       Example : np.random.randint(50)  -->  27
+
+							 np.random.randint(50)  -->  33
+
+							 np.random.randint(50)  -->  12   //it changes each time the code is run
+
+//For getting the index(position) of a number in a list
+	Ex : x = [ 7, 3, 5, 10, 8 ]
+	x.argmin()   -->  1   minimum value 3 is in index 1 position
+	x.argmax()   -->  3   maximum value 10 is in index 3 position						
+
+#Pandas library
+import pandas as pd
+
+//For creating a series using pandas             Ex : x = [ 'a', 'b', 'c', 'd', 'e' ]
+pd.Series(parameters)				      y = [ 1, 2, 3, 4, 5 ]
+						      pd.Series(data = x, index = y) //if u dont want to give data or index then u have to give the variables in order pd.Series( x, y)
+	parameters --> data,index,...etc	      Output:
+							    [    1      a
+								 2      b
+								 3      c
+								 4	d
+								 5	e   ]
+
+pd.DataFrame(data,index,columns)		 Ex : A = [ 1,  2, 3, 4,   ]
+						      B = [ 6,  7, 8, 9,   ]
+						      C = [11, 12, 13, 14, ]
+						      D = [16, 17, 18, 19, ]
+						      E = [21, 22, 23, 24, ]
+							
+						     df = pd.DataFrame([A,B,C,D,E],['r1','r2','r3','r4','r5'],[c1,c2,c3,c4])
+						      Output:
+							    [        c1  c2  c3  c4
+								r1   1   2   3   4
+								r2   6   7   8   9
+								r2   11  12  13  14
+								r4   16  17  18  19
+								r5   21  22  23  24   ]
+
+//Creating a column in dataframe
+	Ex : df = pd.DataFrame([A,B,C,D,E],['r1','r2','r3','r4','r5'],[c1,c2,c3,c4])
+		df['c5'] = df['c2'] + df['c3']       //which will give u a new column with the added values of columns(c2 and c3)
+		
+		           Output:
+				    [        c1  c2  c3  c4  c5
+					r1   1   2   3   4   5
+					r2   6   7   8   9   15
+					r2   11  12  13  14  25
+					r4   16  17  18  19  35
+					r5   21  22  23  24  45  ]
+
+//For deleting a row permanently
+	df.drop('row' , axis = 0, inplace = True)         
+
+//For deleting a column permanently
+	df.drop('column' , axis = 1, inplace = False)
+
+//Accessing the elemnts of a column 
+	df['column']
+
+//Accessing the elemnts of a row
+	df.loc['row']  
+
+//Accessing the elemnts of a row by its index
+	df.iloc[index_value]
+
+//Accessing an individual element
+	df.loc['row', 'column']
+
+//Missing data in dataframe
+	Ex : d = {'a':[1,2,3,4],'b':[5,6,7,np.nan],'c':[8,9,np.nan,np.nan],'d':[10,np.nan,np.nan,np.nan]        np.nan gives you NaN  //meaning no value present
+	     df = pd.DataFrame(d)
+	Output :
+		[      a   b   c   d 
+		   0   1   2   3   4
+		   1   5   6   7  NaN
+		   2   8   9  NaN NaN
+		   3   10 NaN NaN NaN  ]
+
+//Missing data in rows
+	df.dropna(axis=0)
+	Output : 
+	  	[      a   b    c   d
+		   0   1   2    3   4   ]
+
+//Missing data in columns
+	df.dropna(axis=1)
+	Output : 
+		[      a
+		   0   1
+		   1   5
+		   2   8
+		   3  10   ]
+
+//Filling for missing values
+	df.fillna(value)		Ex : df.fillna(3)
+					Output :
+						[      a   b   c   d 
+		   				   0   1   2   3   4
+		   				   1   5   6   7   3
+		   				   2   8   9   3   3
+		   				   3   10  3   3   3  ]
+
+//using groupby in pandas
+  Ex : p = {'item':['apple','apple','mango','mango'],'sales':['mon','wed','fri','sun'],'cost':[20,15,40,55]}
+       df = pd.DataFrame(p)
+       Output : 
+	      [      item       sales      cost
+	             apple	 mon        20 
+		     apple       wed        15
+		     mango       fri        40
+		     mango       sun        55    ]
+	x = df.groupby('item')    //created a group of item initialized in x
+	
+//Performing the different methods on groupby
+	x.mean()       //For getting the mean on x
+	Output : 
+	       [                  sales
+			item
+			apple       17.5
+			mango       47.5         ]
+
+	x.sum()         //For getting the sum on x
+	Output : 
+	       [                  sales
+			item
+			apple       35
+			mango       95         ]
+
+	x.std()         //For getting the standard deviation
+	x.count()       //For getting the total value
+	x.max()         //For getting the max value
+	x.min()         //For getting the min value
+	x.describe()    //For getting the describe value meaning it gets all the methods output (count,mean,std,min,25%,50%,75%,max)
+	x.describe.transpose()  //For getting the describe output in a table form
+
+//For joining of two data frames using pandas
+  Ex :	x1 = {'a1':[1,2,3],'a2':[4,5,6]}
+	y1 = {'b1':[4,6,8],'b2':[3,5,7]}
+	x = pd.DataFrame(x1, index = ['p1','p2','p3]
+	y = pd.DataFrame(y1, index = ['p1','p2','p3]
+
+	x.join(y,how='options')   options=left,right,inner,outer
+
+//For concatinating of data frames using pandas
+  Ex :  x1 = {'a1':[1,2,3],'a2':[4,5,6]}
+	x2 = {'b1':[4,6,8],'b2':[3,5,7]}
+	x3 = {'a1':[1,2,3],'a2':[4,5,6]}
+	df1 = pd.DataFrame(x1,index = [1,2,3]
+	df2 = pd.DataFrame(x1,index = [1,2,3]
+	df3 = pd.DataFrame(x1,index = [4,5,6]
+	pd.concat([df1,df2,df3], axis=0 or 1)   //axis is 0 for row, axis is 1 for column
+
+//For merging 
+	pd.merge([df1,df2], how='options', on='common')  //options=left,right,inner,outer  common --> give the common column name
+
+#Matplotlib library
+//Getting Started
+import matplotlib.pyplot as plt
+
+	Ex : x = np.linspace(0,10,20)
+	     y = x * x
+	     z = x + y
+
+//For ploting a graph
+	plt.plot(x,y)
+	plt.xlabel('x-axis')		//For labeling the x-axis
+	plt.ylabel('y-axis')		//For labeling the y-axis
+	plt.title('My Graph')		//For labeling the title
+
+//For creating subplots
+	plt.subplot(rows,columns,graph_index)
+	plt.plot(x,y)			//For plotting the graph	
+	plt.xlabel('x-axis')
+	plt.ylabel('y-axis')
+	plt.title('My Title')		
+	plt.tight_layout		//For getting spaces between all the subplots
+
+//Types of plots
+	plt.bar(x,y)
+	plt.hist(x,y)
+ 	plt.scatter(x,y)
+	plt.fill(x,y)
+ 
+#PLotly and Cufflink
+import plotly as pl
+import cufflinks as cf
+
+import plotly.offline as po		//For using the plotly offline otherwise we need to use login credentials
+po.init_notebook_mode(connected = True)
+
+cf.go_offline()				//For using the cufflinks offline otherwise we need to use login credentials
+
+#geoplotting
+import pandas as pd
+import plotly.plotly as py
+import plotly.offline as po
+import plotly.graph_objs as go
+%matplotlib inline
+
+po.init_notebook_mode(connected = True)
+
+agri = pd.read_csv('agri.csv')		//Loading of datasheet
+  where agri is the variable name and agri.csv is the datasheet name tat needs to be loaded
+agri.head()   				//For getting only the first five out of all the values
+
+//For plotting a map without any datasheets
+data = dict(type = 'choropleth',			
+	    locations = ['AL','AK','AZ','AR','CA'],				//locations should be given by their state codes
+	    locationmode = 'USA-states',					//usa states is like a keyword in locationmode 
+	    z = [1,2,30,40,50],							//z is the values given to the states specified
+	    text = ['alabama','alaska','arizona','pugger','california'])	//text is the labels given to the states
+
+layout = dict(geo={'scope':'usa'})						//scope should be always in small letter
+
+x = pg.Figure(data=[data], layout=layout)
+po.plot(x)									//For getting the map
+
+//Plotting a map from a datasheet for states
+data = dict(type = 'choropleth',			
+	    locations = agri['code'],						
+	    locationmode = 'USA-states',					 
+	    z = agri[total exports],						
+	    text = agri['text'],
+	    colorscale = 'Greens',						//For changing the color in the map
+	    colorbar = {'title' : 'colorbar'})					//It is for giving the title to the colorbar 					
+
+layout = dict(title='AGRI PLOT',geo=dict(scope='usa' , showlakes=True))		//showlakes is made true for getting all the lakes on the map
+
+x = pg.Figure(data=[data], layout=layout)
+po.plot(x)	
+
+//For plotting a map from a datasheet for the whole globe
+data = dict(type = 'choropleth',			
+	    locations = globe['code'],				//locations should be given by their state codes 
+	    z = globe['values'],						
+	    text = globe['text'])	//text is the labels given to the states
+
+layout = dict(title:'Global plotting', geo=dict(projection={'type':'hammer'}))						//scope should be always in small letter
+
+x = pg.Figure(data=[data], layout=layout)
+po.plot(x)									
+								
+#SQLite Database
+import sqlite3
+
+//Creating a database
+  def createTable():
+      conn = sqlite3.connect('lite.db')							//opening a connection with the connect() function with the database
+      cur = conn.cursor()								//creating the cursor
+      cur.execute("CREATE TABLE data(Roll_No INTEGER,Name TEXT,Marks REAL)")		//creating the table name [data] with its columns [Roll_No,Name,Marks] with its data types
+      conn.commit()									//For saving the changes made to the connection
+      conn.close()									//For closing the connection
+
+//Inserting data into the database
+def insert(roll,name,mark):								Note:only the execute changes in all the functions
+    conn = sqlite3.connect('lite.db')
+    cur = conn.cursor()
+    cur.execute("INSERT INTO data VALUES(?,?,?)",(roll,name,mark))			//Inserting the data into the table
+    conn.commit()
+    conn.close()
+insert(1,'ayush',56)
+
+//For viewing the database
+def view():
+    cur.execute("SELECT * FROM data")
+    rows = cur.fetchall()
+    return rows
+print(view())
+
+//For deleting the data
+def delete(roll):
+    cur.execute("DELETE FROM data where Roll_No=?",(roll,))
+delete(1)
+
+//For updating the data
+def update(roll,name,mark):
+    cur.execute("UPDATE data SET Roll_No=? , Name=? WHERE Marks=?",(roll,name,mark))	//Here the where data will remain the change and the roll no & name would get changed
+update(2,'Ayushi',56)
+
+#pyscopg2 database
+import psyscopg2
+
+Everything is the same as that of the sqlite except for
+1.the connection is done differently
+	conn = psycopg2.connect("dbname='data' user='postgres' password='postgre' port='5432' host='localhost'")
+2.inplace of ? here we use %s as its substitute
+
+#Tkinter
+import tkinter
+from tkinter import *
+
+win= Tk()				//Creating the window
+win.geometry("widthxheight")		//Specifying the window size
+
+win.mainloop()				//For presenting the window
